@@ -9,13 +9,13 @@ set themes (ls "$BASE16_HOME/scripts" | sed -e 's/base16-\(.*\).sh/\1/')
 complete -x -c base16 -a "$themes" -d "Theme"
 
 function base16
+  if test (count $argv) -ne 1
+    _base16_help > /dev/stderr
+    return 1
+  end
   switch "$argv"
     case -h {,-,--}help
       _base16_help > /dev/stderr
-      return
-    case test (count $argv) -ne 1
-      _base16_help > /dev/stderr
-      return 1
     case \*
       _base16 $argv
   end

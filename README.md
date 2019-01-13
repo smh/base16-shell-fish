@@ -15,7 +15,7 @@ environment variable `BASE16_HOME` to point to your installation.
 With [fisherman](https://github.com/fisherman/fisherman)
 
 ```fish
-fisher smh/base16-shell-fish
+fisher add smh/base16-shell-fish
 ```
 
 ## Usage

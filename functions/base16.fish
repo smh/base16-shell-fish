@@ -39,5 +39,11 @@ function _base16
   set script "$BASE16_HOME/scripts/base16-$theme.sh"
   eval sh $script
   ln -sf $script ~/.base16_theme
+  set -xg BASE16_THEME $theme
   echo -e "if !exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" > ~/.vimrc_background
+  if test (count $BASE16_SHELL_HOOKS) -eq 1; and test -d "$BASE16_SHELL_HOOKS"
+    for hook in $BASE16_SHELL_HOOKS/*
+      test -f "$hook"; and test -x "$hook"; and "$hook"
+    end
+  end
 end
